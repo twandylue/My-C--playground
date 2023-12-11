@@ -3,26 +3,27 @@
 
 using namespace std;
 
-int binary_srot(vector<int> input, int target) {
-  int index = -1;
-  int left = 0;
-  int right = input.size() - 1;
-  while (left <= right) {
-    int mid = (left + right) / 2;
-    if (input[mid] > target) {
-      right = mid - 1;
-    } else if (input[mid] < target) {
-      left = mid + 1;
-    } else {
-      return mid;
+void insertion_sort(vector<int> &input) {
+  for (size_t i = 0; i < input.size(); ++i) {
+    int minPos = i;
+    for (size_t j = i; j < input.size(); ++j) {
+      if (input[j] < input[minPos]) {
+        minPos = j;
+      }
     }
-  }
 
-  return index;
+    int tmp = input[i];
+    input[i] = input[minPos];
+    input[minPos] = tmp;
+  }
 }
 
 int main() {
-  vector<int> v = {1, 2, 3, 4, 5, 6, 7, 8};
-  cout << binary_srot(v, 5) << endl;
+  vector<int> v = {3, 2, 1, 8, 5, 4, 7, 6};
+  insertion_sort(v);
+  for (size_t i = 0; i < v.size(); ++i) {
+    cout << v[i] << " ";
+  }
+
   return 0;
 }
