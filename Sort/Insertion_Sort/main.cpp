@@ -1,3 +1,12 @@
+/*
+ * Insertion sort
+ * Time complexity: O(n^2)
+ * Space complexity: O(1)
+ * Stable: No
+ * Sorts in place: Yes
+ * Notes: In-place, not stable
+ */
+
 #include <iostream>
 #include <vector>
 
