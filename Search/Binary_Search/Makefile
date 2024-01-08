@@ -1,6 +1,6 @@
 # A line starting with a has is a comment, we'll build up
 # the below example
-TARGET = bianry_sort
+TARGET = binary_search
 SRC_FILES = main.cpp
 
 # NO EDITS NEEDED BELOW THIS LINE
