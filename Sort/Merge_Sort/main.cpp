@@ -21,25 +21,29 @@ void print_vector(vector<int> &nums) {
 }
 
 vector<int> merge(vector<int> &left, vector<int> &right) {
-  vector<int> result = vector<int>();
+  vector<int> result = vector<int>(left.size() + right.size());
+  size_t index = 0;
   size_t l = 0;
   size_t r = 0;
-  while (l < left.size() && r < right.size()) {
+  while (l < left.size() && r < right.size() && index < result.size()) {
     if (left[l] < right[r]) {
-      result.push_back(left[l]);
+      result.at(index) = left[l];
       l += 1;
     } else {
-      result.push_back(right[r]);
+      result.at(index) = right[r];
       r += 1;
     }
+    index += 1;
   }
-  while (l < left.size()) {
-    result.push_back(left[l]);
+  while (l < left.size() && index < result.size()) {
+    result.at(index) = left[l];
     l += 1;
+    index += 1;
   }
-  while (r < right.size()) {
-    result.push_back(right[r]);
+  while (r < right.size() && index < result.size()) {
+    result.at(index) = right[r];
     r += 1;
+    index += 1;
   }
   return result;
 }
@@ -66,7 +70,7 @@ vector<int> merge_sort(vector<int> &nums) {
 }
 
 int main() {
-  vector<int> vec = {5, 4, 3, 2, 1, 0, 0, -1};
+  vector<int> vec = {3, 2, 1, 5, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
   vector<int> result = merge_sort(vec);
   print_vector(result);
 
